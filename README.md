@@ -1,2 +1,3 @@
-# social
-A social media demo app
+# Forum
+
+A forum demo app
