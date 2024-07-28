@@ -53,9 +53,17 @@
 			flex-direction: column;
 			gap: 50px;
 			justify-content: center;
-			h2 {
-				font-size: 30px;
-				color: var(--primary);
+			.heading {
+				display: flex;
+				align-items: center;
+				h2 {
+					font-size: 30px;
+					color: var(--primary);
+				}
+				img {
+					height: 40px;
+					margin-right: 10px;
+				}
 			}
 			form {
 				display: flex;

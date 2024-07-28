@@ -6,7 +6,7 @@ const Login = () => {
 		<div className='login'>
 			<div className='card'>
 				<div className='left'>
-					<h1>Welcome to the Forum</h1>
+					<h1>Welcome to the Forum 🔎</h1>
 					<p>
 						This is a place for great minds to discuss great topics. Bring your
 						deep questions, curiosities, and musings here. Where there is an
@@ -16,7 +16,10 @@ const Login = () => {
 					<button>Register</button>
 				</div>
 				<div className='right'>
-					<h2>Login</h2>
+					<div className='heading'>
+						<img src='logo.svg' />
+						<h2>Login</h2>
+					</div>
 					<form>
 						<input type='text' placeholder='Email' />
 						<input type='password' placeholder='Password' />
