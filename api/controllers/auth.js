@@ -62,4 +62,14 @@ export const login = (req, res) => {
 	});
 };
 
-export const logout = (req, res) => {};
+export const logout = (req, res) => {
+	// Remove the JWT cookie
+	res
+		.clearCookie('accessToken', {
+			// options ensure browser removes cookie
+			secure: true,
+			sameSite: 'none',
+		})
+		.status(200)
+		.json('User has been logged out');
+};
