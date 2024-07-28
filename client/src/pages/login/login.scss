@@ -1,0 +1,82 @@
+.login {
+	height: 100vh;
+	background-color: var(--primary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.card {
+		display: flex;
+		background-color: var(--neutral);
+		width: 50%;
+		border-radius: 10px;
+		min-height: 600px;
+		overflow: hidden;
+		.left {
+			flex: 1;
+			background: linear-gradient(
+					rgba(114, 109, 171, 0.75),
+					rgba(114, 109, 171, 0.75)
+				),
+				url('https://www.dgparchitects.com/wp-content/uploads/2016/03/Debate-Chamber-edited.jpg')
+					center;
+			background-size: cover;
+			padding: 50px;
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+			color: var(--text-light);
+			h1 {
+				font-size: 50px;
+				line-height: 60px;
+			}
+			p {
+				line-height: 25px;
+			}
+			span {
+				font-size: 14px;
+			}
+			button {
+				width: 50%;
+				padding: 10px;
+				border: none;
+				background-color: var(--neutral);
+				color: var(--primary);
+				cursor: pointer;
+				border-radius: 10px;
+			}
+		}
+		.right {
+			flex: 1;
+			padding: 50px;
+			display: flex;
+			flex-direction: column;
+			gap: 50px;
+			justify-content: center;
+			h2 {
+				font-size: 30px;
+				color: var(--primary);
+			}
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 30px;
+				input {
+					border: none;
+					border-bottom: 1px solid lightgray;
+					padding: 20px 10px;
+				}
+				button {
+					width: 50%;
+					padding: 10px;
+					border: none;
+					background-color: var(--primary);
+					color: var(--text-light);
+					font-weight: bold;
+					cursor: pointer;
+					border-radius: 10px;
+				}
+			}
+		}
+	}
+}

@@ -3,16 +3,10 @@
 	--primary: #726dab;
 	--secondary: #7d8cc4;
 	--accent: #a0d2db;
-	--dark-text: #000000;
-	--light-text: #ffffff;
+	--neutral: #ffffff;
+	--text-light: #ffffff;
+	--text-dark: #000000;
 
 	/* Global rules */
-	color: #000000;
-	background-color: #f9f9f9;
 	font-family: Arial, sans-serif;
-}
-
-h1 {
-	font-size: 3.2em;
-	line-height: 1.1;
 }
