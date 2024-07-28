@@ -5,6 +5,8 @@ import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 // Variables
 const app = express();
@@ -12,6 +14,8 @@ const port = 3001;
 
 // Middleware
 app.use(express.json());
+app.use(cors());
+app.use(cookieParser());
 
 // Routing
 app.use('/api/auth', authRoutes);
