@@ -1,5 +1,6 @@
 import React from 'react';
 import './register.scss';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
 	return (
@@ -13,7 +14,9 @@ const Register = () => {
 						and you'll be on your way.
 					</p>
 					<span>Already have an account?</span>
-					<button>Login</button>
+					<Link to='/login' className='link'>
+						Login
+					</Link>
 				</div>
 				<div className='right'>
 					<div className='heading'>

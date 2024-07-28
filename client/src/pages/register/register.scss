@@ -37,7 +37,7 @@
 			span {
 				font-size: 14px;
 			}
-			button {
+			.link {
 				width: 50%;
 				padding: 10px;
 				border: none;
@@ -45,6 +45,10 @@
 				color: var(--primary);
 				cursor: pointer;
 				border-radius: 10px;
+				text-decoration: none;
+				text-align: center;
+				font-size: 14px;
+				font-weight: bold;
 			}
 		}
 		.right {
