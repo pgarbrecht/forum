@@ -10,7 +10,6 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Header from './components/Header';
 import { AuthContext } from './context/authContext';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function Routes() {
 	/* React router and useContext are used to help make protected pages secure and scalable.
@@ -20,14 +19,13 @@ function Routes() {
 	The Outlet component renders the currently active page, such as the Home page component. */
 
 	const { currentUser } = useContext(AuthContext);
-	const queryClient = new QueryClient();
 
 	const Layout = () => {
 		return (
-			<QueryClientProvider client={queryClient}>
+			<>
 				<Header />
 				<Outlet />
-			</QueryClientProvider>
+			</>
 		);
 	};
 

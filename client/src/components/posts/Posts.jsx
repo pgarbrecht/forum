@@ -9,9 +9,10 @@ const Posts = () => {
 	useEffect(() => {
 		makeRequest.get('/posts').then((res) => {
 			setPosts(res.data);
+			console.log('the posts data is: ', posts);
 		});
 	}, []);
-	console.log('the posts are: ', posts);
+
 	return (
 		<div className='posts'>
 			{posts.map((post) => (

@@ -8,3 +8,14 @@ export const getPosts = (req, res) => {
 		return res.status(200).json(data);
 	});
 };
+
+export const deletePost = (req, res) => {
+	const postId = req.params.id;
+	const q = ' DELETE FROM posts WHERE id = ? ';
+
+	db.query(q, [postId], (err, data) => {
+		if (err) return res.send(err);
+		if (data.affectedRows > 0)
+			return res.status(200).json('Post has been deleted.');
+	});
+};
