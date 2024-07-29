@@ -1,20 +1,15 @@
-// import Post from '../post/Post';
-// import './posts.scss';
-import { useQuery } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
 import { makeRequest } from '../../utils';
 
 const Posts = () => {
-	const { isLoading, error, data } = useQuery({
-		queryKey: ['posts'],
-		queryFn: () => {
-			makeRequest.get('/posts').then((res) => {
-				console.log('the res is: ', res);
-				return res.data;
-			});
-		},
-	});
+	const [posts, setPosts] = useState([]);
 
-	console.log('the data is: ', data);
+	useEffect(() => {
+		makeRequest.get('/posts').then((res) => {
+			setPosts(res.data);
+		});
+	}, []);
+	console.log('the posts are: ', posts);
 	return <div className='posts'></div>;
 };
 
