@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeRequest } from '../../utils';
+import Post from '../post/Post';
+import './posts.scss';
 
 const Posts = () => {
 	const [posts, setPosts] = useState([]);
@@ -10,7 +12,13 @@ const Posts = () => {
 		});
 	}, []);
 	console.log('the posts are: ', posts);
-	return <div className='posts'></div>;
+	return (
+		<div className='posts'>
+			{posts.map((post) => (
+				<Post post={post} key={post.id} />
+			))}
+		</div>
+	);
 };
 
 export default Posts;
