@@ -5,10 +5,11 @@ import { AuthContext } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const PostForm = () => {
+const PostForm = (props) => {
 	// Variables
 	const { currentUser } = useContext(AuthContext);
 	const navigate = useNavigate();
+	const refetch = props.refetch;
 
 	// State
 	const [inputs, setInputs] = useState({
@@ -28,8 +29,8 @@ const PostForm = () => {
 		try {
 			// First create the user account
 			await axios.post('http://localhost:3001/api/posts', inputs);
-			// Then refresh the page to show new post on the page
-			navigate('/');
+			// Then refetch posts to show new post on the page
+			refetch();
 		} catch (err) {
 			console.log('Error occurred: ', err);
 		}

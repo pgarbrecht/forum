@@ -15,8 +15,8 @@ const Post = (props) => {
 		await makeRequest.delete(`/posts/${post.id}`).then((res) => {
 			console.log('the delete response is: ', res.data);
 		});
-		// Then refresh the page to show new post on the page
-		navigate('/');
+		// Then refetch posts so page updates to show deleted post not there
+		props.refetch();
 	};
 
 	console.log('the post info is: ', post);
