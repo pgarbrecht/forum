@@ -2,13 +2,11 @@
 import React, { useState, useContext } from 'react';
 import './postform.scss';
 import { AuthContext } from '../../context/authContext';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const PostForm = (props) => {
 	// Variables
 	const { currentUser } = useContext(AuthContext);
-	const navigate = useNavigate();
 	const refetch = props.refetch;
 
 	// State

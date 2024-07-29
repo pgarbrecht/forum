@@ -1,14 +1,14 @@
+// Dependencies
 import React, { useContext } from 'react';
 import { makeRequest } from '../../utils';
 import { AuthContext } from '../../context/authContext';
-import { useNavigate } from 'react-router-dom';
 import './post.scss';
 
 const Post = (props) => {
 	// Variables
 	const post = props.post;
+	const refetch = props.refetch;
 	const { currentUser } = useContext(AuthContext);
-	const navigate = useNavigate();
 
 	// Functions
 	const handleDelete = async () => {
@@ -16,7 +16,7 @@ const Post = (props) => {
 			console.log('the delete response is: ', res.data);
 		});
 		// Then refetch posts so page updates to show deleted post not there
-		props.refetch();
+		refetch();
 	};
 
 	console.log('the post info is: ', post);
