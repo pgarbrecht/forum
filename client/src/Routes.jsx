@@ -12,11 +12,11 @@ import { AuthContext } from './context/authContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function Routes() {
-	/* React router functionality is used to help make protected pages secure and scalable.
-	A ProtectedRoute component is the parent component that renders a Layout component.
+	/* React router and useContext are used to help make protected pages secure and scalable.
+	A ProtectedRoute component is the parent component that checks whether the user can proceed.
+	If the user is logged in, ProtectedRoute renders Layout, if not it redirects user to Login.
 	The Layout component renders global components, like header+footer and the Outlet component.
-	The Outlet component renders the currently active page, such as the Home page component.
-	If the user is not logged in though, then the Navigate component sends them to Login. */
+	The Outlet component renders the currently active page, such as the Home page component. */
 
 	const { currentUser } = useContext(AuthContext);
 	const queryClient = new QueryClient();
