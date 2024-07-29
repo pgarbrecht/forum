@@ -1,7 +1,8 @@
 // Dependencies
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../context/authContext';
 import './register.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Register = () => {
@@ -21,18 +22,20 @@ const Register = () => {
 		}));
 	};
 
+	// Variables
+	const { login } = useContext(AuthContext);
+	const navigate = useNavigate();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(
-			'sending request to: ',
-			'http://localhost:3001/api/auth/register',
-			'with inputs: ',
-			inputs
-		);
 		try {
+			// First create the user account
 			await axios.post('http://localhost:3001/api/auth/register', inputs);
+			// Then log them in and send to home route for convenience
+			const { username, ...loginInputs } = inputs;
+			await login(loginInputs);
+			navigate('/');
 		} catch (err) {
-			console.log('got the err: ', err);
 			setError(err.response.data);
 		}
 	};
