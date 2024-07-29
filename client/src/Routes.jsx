@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import {
 	createBrowserRouter,
 	RouterProvider,
@@ -8,6 +8,8 @@ import {
 import Home from './pages/home/Home';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
+import { AuthContext } from './context/authContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function Routes() {
 	/* React router functionality is used to help make protected pages secure and scalable.
@@ -16,21 +18,24 @@ function Routes() {
 	The Outlet component renders the currently active page, such as the Home page component.
 	If the user is not logged in though, then the Navigate component sends them to Login. */
 
-	const [currentUser, setCurrentUser] = useState(true);
+	const { currentUser } = useContext(AuthContext);
+	const queryClient = new QueryClient();
 
 	const Layout = () => {
 		return (
-			<div>
+			<QueryClientProvider client={queryClient}>
 				<div>
-					<Outlet />
+					<div>
+						<Outlet />
+					</div>
 				</div>
-			</div>
+			</QueryClientProvider>
 		);
 	};
 
 	const ProtectedRoute = ({ children }) => {
 		if (!currentUser) {
-			return <Navigate to='login' />;
+			return <Navigate to='/login' />;
 		}
 		return children;
 	};

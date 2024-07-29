@@ -1,8 +1,42 @@
-import React from 'react';
+// Dependencies
+import React, { useState } from 'react';
 import './register.scss';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
+	// State
+	const [inputs, setInputs] = useState({
+		username: '',
+		email: '',
+		password: '',
+	});
+	const [error, setError] = useState(null);
+
+	// Functions
+	const handleChange = (e) => {
+		setInputs((prev) => ({
+			...prev,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		console.log(
+			'sending request to: ',
+			'http://localhost:3001/api/auth/register',
+			'with inputs: ',
+			inputs
+		);
+		try {
+			await axios.post('http://localhost:3001/api/auth/register', inputs);
+		} catch (err) {
+			console.log('got the err: ', err);
+			setError(err.response.data);
+		}
+	};
+
 	return (
 		<div className='register'>
 			<div className='card'>
@@ -24,10 +58,26 @@ const Register = () => {
 						<h2>Register</h2>
 					</div>
 					<form>
-						<input type='text' placeholder='Username' />
-						<input type='text' placeholder='Email' />
-						<input type='password' placeholder='Password' />
-						<button>Submit</button>
+						<input
+							type='text'
+							placeholder='Username'
+							name='username'
+							onChange={handleChange}
+						/>
+						<input
+							type='text'
+							placeholder='Email'
+							name='email'
+							onChange={handleChange}
+						/>
+						<input
+							type='password'
+							placeholder='Password'
+							name='password'
+							onChange={handleChange}
+						/>
+						{error && <p>{error}</p>}
+						<button onClick={handleSubmit}>Submit</button>
 					</form>
 				</div>
 			</div>

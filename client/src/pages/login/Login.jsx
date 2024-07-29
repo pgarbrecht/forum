@@ -1,8 +1,36 @@
-import React from 'react';
+// Dependencies
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../context/authContext';
 import './login.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+	// State
+	const [inputs, setInputs] = useState({
+		username: '',
+		password: '',
+	});
+	const [error, setError] = useState(null);
+
+	// Variables
+	const navigate = useNavigate();
+
+	// Functions
+	const handleChange = (e) => {
+		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+	};
+	const { login } = useContext(AuthContext);
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			await login(inputs);
+			navigate('/');
+		} catch (err) {
+			setError(err.response.data);
+		}
+	};
+
 	return (
 		<div className='login'>
 			<div className='card'>
@@ -24,9 +52,20 @@ const Login = () => {
 						<h2>Login</h2>
 					</div>
 					<form>
-						<input type='text' placeholder='Email' />
-						<input type='password' placeholder='Password' />
-						<button>Submit</button>
+						<input
+							type='text'
+							placeholder='Email'
+							name='email'
+							onChange={handleChange}
+						/>
+						<input
+							type='password'
+							placeholder='Password'
+							name='password'
+							onChange={handleChange}
+						/>
+						{error && <p>{error}</p>}
+						<button onClick={handleSubmit}>Submit</button>
 					</form>
 				</div>
 			</div>
