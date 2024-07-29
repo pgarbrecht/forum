@@ -1,0 +1,29 @@
+.header {
+	height: 50px;
+	background-color: var(--neutral-dark);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	position: sticky;
+	top: 0;
+	z-index: 999;
+
+	.left {
+		display: flex;
+		align-items: center;
+		padding-left: 15px;
+		img {
+			height: 30px;
+			margin-right: 10px;
+		}
+		span {
+			color: var(--primary);
+			font-size: 18px;
+			font-weight: bold;
+		}
+	}
+	.right {
+		padding-right: 15px;
+	}
+}
