@@ -1,0 +1,24 @@
+.postform {
+	margin-top: 15px;
+	height: 120px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	form {
+		width: 500px;
+		display: flex;
+		flex-direction: column;
+		textarea {
+			resize: none;
+			padding: 5px;
+			width: 487px;
+			height: 75px;
+		}
+		button {
+			background-color: var(--secondary);
+			color: var(--text-light);
+			font-weight: bolder;
+			padding: 2px;
+		}
+	}
+}
