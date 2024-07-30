@@ -1,9 +1,10 @@
 import express from 'express';
-import {} from '../controllers/comments.js';
+import { getComments, addComment } from '../controllers/comments.js';
 
 const router = express.Router();
 
 // Use controller
-router.get('');
+router.get('/', getComments);
+router.post('/', addComment);
 
 export default router;

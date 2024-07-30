@@ -28,17 +28,19 @@
 		margin-left: 10px;
 		.edit {
 			width: 30px;
-			border: solid 1px var(--neutral-dark);
 			padding: 2px 5px;
-			background-color: var(--accent);
+			border: solid 2px var(--accent);
+			background-color: var(--neutral-medium);
 			border-radius: 5px;
+			font-size: 14px;
 		}
 		.delete {
-			width: 50px;
-			border: solid 1px var(--neutral-dark);
+			width: 40px;
 			padding: 2px 5px;
-			background-color: var(--destructive);
+			border: solid 2px var(--destructive);
+			background-color: var(--neutral-medium);
 			border-radius: 5px;
+			font-size: 14px;
 		}
 	}
 }
