@@ -5,12 +5,40 @@
 	border-radius: 10px;
 	box-shadow: 0 0 5px var(--neutral-dark);
 	margin-bottom: -30px;
-	.edit {
-		width: 30px;
-		border: solid 1px var(--neutral-dark);
+	.description {
+		padding: 0px 10px;
+		textarea {
+			margin-top: 15px;
+			height: 100px;
+			width: 470px;
+			resize: none;
+			margin-bottom: -4px;
+		}
+		button {
+			width: 475px;
+			background-color: var(--accent);
+			font-weight: bolder;
+			color: var(--text-light);
+			border: solid 1px var(--neutral-dark);
+		}
 	}
-	.delete {
-		width: 50px;
-		border: solid 1px var(--neutral-dark);
+	.actions {
+		display: flex;
+		gap: 5px;
+		margin-left: 10px;
+		.edit {
+			width: 30px;
+			border: solid 1px var(--neutral-dark);
+			padding: 2px 5px;
+			background-color: var(--accent);
+			border-radius: 5px;
+		}
+		.delete {
+			width: 50px;
+			border: solid 1px var(--neutral-dark);
+			padding: 2px 5px;
+			background-color: var(--destructive);
+			border-radius: 5px;
+		}
 	}
 }

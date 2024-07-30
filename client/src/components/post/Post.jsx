@@ -55,31 +55,35 @@ const Post = (props) => {
 
 	return (
 		<div className='post'>
-			{/* If not editing the post, show description. If editing the post, show form. */}
-			{isEditing ? (
-				<form>
-					<textarea
-						type='text'
-						value={inputs.description}
-						name='description'
-						onChange={handleChange}
-					/>
-					<button onClick={handleSubmit}>Submit</button>
-				</form>
-			) : (
-				<p>{post.description}</p>
-			)}
-			{/* The buttons to edit or delete post are only shown if it is the current user's post */}
-			{post.userId === currentUser.id && (
-				<p className='edit' onClick={handleEdit}>
-					Edit
-				</p>
-			)}
-			{post.userId === currentUser.id && (
-				<p className='delete' onClick={handleDelete}>
-					Delete
-				</p>
-			)}
+			<div className='description'>
+				{/* If editing the post, show form. If not editing the post, show description. */}
+				{isEditing ? (
+					<form>
+						<textarea
+							type='text'
+							value={inputs.description}
+							name='description'
+							onChange={handleChange}
+						/>
+						<button onClick={handleSubmit}>Submit</button>
+					</form>
+				) : (
+					<p>{post.description}</p>
+				)}
+			</div>
+			<div className='actions'>
+				{/* The buttons to edit or delete post are only shown if it is the current user's post */}
+				{post.userId === currentUser.id && !isEditing && (
+					<p className='edit' onClick={handleEdit}>
+						Edit
+					</p>
+				)}
+				{post.userId === currentUser.id && (
+					<p className='delete' onClick={handleDelete}>
+						Delete
+					</p>
+				)}
+			</div>
 		</div>
 	);
 };
