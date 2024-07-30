@@ -27,3 +27,27 @@ export const addComment = (req, res) => {
 		return res.status(200).json('Comment has been created.');
 	});
 };
+
+export const editComment = (req, res) => {
+	const commentId = req.params.id;
+	const q =
+		'UPDATE comments SET `description`= ?, `userId`=?, `createdAt`=? WHERE id = ?';
+
+	const values = [req.body.description, req.body.userId, req.body.createdAt];
+
+	db.query(q, [...values, commentId], (err, data) => {
+		if (err) return res.send(err);
+		return res.status(200).json('Comment has been updated.');
+	});
+};
+
+export const deleteComment = (req, res) => {
+	const commentId = req.params.id;
+	const q = 'DELETE FROM comments WHERE `id` = ?';
+
+	db.query(q, [commentId], (err, data) => {
+		if (err) return res.status(500).json(err);
+		if (data.affectedRows > 0) return res.json('Comment has been deleted.');
+		return res.status(403).json('You can delete only your comment.');
+	});
+};
