@@ -1,5 +1,5 @@
 // Dependencies
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { makeRequest } from '../../utils';
 import { AuthContext } from '../../context/authContext';
 import './post.scss';
@@ -7,8 +7,7 @@ import axios from 'axios';
 
 const Post = (props) => {
 	// Variables
-	const post = props.post;
-	const refetch = props.refetch;
+	const { post, refetch } = props;
 	const { currentUser } = useContext(AuthContext);
 
 	// State
@@ -17,6 +16,18 @@ const Post = (props) => {
 		userId: currentUser.id,
 		description: post.description,
 	});
+	const [comments, setComments] = useState([]);
+
+	// Effects
+	useEffect(() => {
+		makeRequest.get(`/comments?postId=${post.id}`).then((res) => {
+			setComments(res.data);
+		});
+	}, []);
+
+	useEffect(() => {
+		console.log('the comments data is: ', comments);
+	}, [comments]);
 
 	// Functions
 	const handleEdit = () => {
@@ -51,8 +62,6 @@ const Post = (props) => {
 		refetch();
 	};
 
-	console.log('the post info is: ', post);
-
 	return (
 		<div className='post'>
 			<div className='description'>
@@ -70,6 +79,9 @@ const Post = (props) => {
 				) : (
 					<p>{post.description}</p>
 				)}
+				{comments?.map((comment) => (
+					<div>{comment.description}</div>
+				))}
 			</div>
 			<div className='actions'>
 				{/* The buttons to edit or delete post are only shown if it is the current user's post */}
@@ -78,7 +90,7 @@ const Post = (props) => {
 						Edit
 					</p>
 				)}
-				{post.userId === currentUser.id && (
+				{post.userId === currentUser.id && !isEditing && (
 					<p className='delete' onClick={handleDelete}>
 						Delete
 					</p>

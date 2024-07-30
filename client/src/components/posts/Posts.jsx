@@ -4,8 +4,7 @@ import Post from '../post/Post';
 import './posts.scss';
 
 const Posts = (props) => {
-	const posts = props.posts;
-	const refetch = props.refetch;
+	const { posts, refetch } = props;
 
 	return (
 		<div className='posts'>
