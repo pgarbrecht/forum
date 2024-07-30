@@ -5,4 +5,12 @@
 	border-radius: 10px;
 	box-shadow: 0 0 5px var(--neutral-dark);
 	margin-bottom: -30px;
+	.edit {
+		width: 30px;
+		border: solid 1px var(--neutral-dark);
+	}
+	.delete {
+		width: 50px;
+		border: solid 1px var(--neutral-dark);
+	}
 }
