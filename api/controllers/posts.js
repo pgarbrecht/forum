@@ -23,6 +23,19 @@ export const addPost = (req, res) => {
 	});
 };
 
+export const editPost = (req, res) => {
+	const postId = req.params.id;
+	const q =
+		'UPDATE posts SET `description`= ?, `userId`=?, `createdAt`=? WHERE id = ?';
+
+	const values = [req.body.description, req.body.userId, req.body.createdAt];
+
+	db.query(q, [...values, postId], (err, data) => {
+		if (err) return res.send(err);
+		return res.status(200).json('Post has been updated.');
+	});
+};
+
 export const deletePost = (req, res) => {
 	const postId = req.params.id;
 	const q = ' DELETE FROM posts WHERE id = ? ';
