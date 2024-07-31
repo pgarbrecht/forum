@@ -1,6 +1,16 @@
 .comment {
-	padding: 0px 10px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	border-bottom: solid 1px var(--neutral-dark);
 	.actions {
-		margin-top: -20px;
+		.edit,
+		.delete {
+			height: 15px;
+			margin-top: -20px;
+		}
+	}
+	.description {
+		max-height: 50px;
 	}
 }

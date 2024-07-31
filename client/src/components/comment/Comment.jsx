@@ -6,7 +6,7 @@ import './comment.scss';
 
 const Comment = (props) => {
 	// Variables
-	const { description, id, postId, userId } = props.data;
+	const { description, id, postId, userId, username } = props.data;
 	const refetchComments = props.refetchComments;
 	const { currentUser } = useContext(AuthContext);
 
@@ -22,7 +22,6 @@ const Comment = (props) => {
 
 	return (
 		<div className='comment'>
-			<p>{description}</p>
 			<div className='actions'>
 				{/* The buttons to edit or delete comment are only shown if it is the current user's comment */}
 				{userId === currentUser.id && (
@@ -36,6 +35,7 @@ const Comment = (props) => {
 					</p>
 				)}
 			</div>
+			<p className='description'>{`${username} says: ${description}`}</p>
 		</div>
 	);
 };

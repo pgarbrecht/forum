@@ -70,41 +70,45 @@ const Post = (props) => {
 
 	return (
 		<div className='post'>
-			<div className='description'>
-				{/* If editing the post, show form. If not editing the post, show description. */}
-				{isEditing ? (
-					<form>
-						<textarea
-							type='text'
-							value={inputs.description}
-							name='description'
-							onChange={handleChange}
-						/>
-						<button onClick={handleSubmit}>Submit</button>
-					</form>
-				) : (
-					<p>{post.description}</p>
-				)}
-			</div>
-			<div className='actions'>
-				{/* The buttons to edit or delete post are only shown if it is the current user's post */}
-				{post.userId === currentUser.id && !isEditing && (
-					<p className='edit' onClick={handleEdit}>
-						Edit
-					</p>
-				)}
-				{post.userId === currentUser.id && !isEditing && (
-					<p className='delete' onClick={handleDelete}>
-						Delete
-					</p>
-				)}
+			<div className='topcontainer'>
+				<div className='actions'>
+					{/* The buttons to edit or delete post are only shown if it is the current user's post */}
+					{post.userId === currentUser.id && !isEditing && (
+						<p className='edit' onClick={handleEdit}>
+							Edit
+						</p>
+					)}
+					{post.userId === currentUser.id && !isEditing && (
+						<p className='delete' onClick={handleDelete}>
+							Delete
+						</p>
+					)}
+				</div>
+				<div className='description'>
+					{/* If editing the post, show form. If not editing the post, show description. */}
+					{isEditing ? (
+						<form>
+							<textarea
+								type='text'
+								value={inputs.description}
+								name='description'
+								onChange={handleChange}
+							/>
+							<button onClick={handleSubmit}>Submit</button>
+						</form>
+					) : (
+						<p>{post.description}</p>
+					)}
+				</div>
 			</div>
 			<CommentForm postId={post.id} refetchComments={refetchComments} />
-			<div className='comments'>
-				{comments?.map((comment) => (
-					<Comment data={comment} refetchComments={refetchComments} />
-				))}
-			</div>
+			{comments.length > 0 && (
+				<div className='comments'>
+					{comments?.map((comment) => (
+						<Comment data={comment} refetchComments={refetchComments} />
+					))}
+				</div>
+			)}
 		</div>
 	);
 };
