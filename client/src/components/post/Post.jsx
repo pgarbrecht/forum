@@ -21,10 +21,6 @@ const Post = (props) => {
 	const [comments, setComments] = useState([]);
 	const [toggleRefetchComments, setToggleRefetchComments] = useState(false);
 
-	// useEffect(() => {
-	// 	console.log('the comments data is: ', comments);
-	// }, [comments]);
-
 	// Functions
 	const handleEdit = () => {
 		setIsEditing(true);
@@ -94,7 +90,7 @@ const Post = (props) => {
 								name='description'
 								onChange={handleChange}
 							/>
-							<button onClick={handleSubmit}>Submit</button>
+							<button onClick={handleSubmit}>Update Post</button>
 						</form>
 					) : (
 						<p>{post.description}</p>

@@ -4,7 +4,6 @@ import { AuthContext } from '../context/authContext';
 
 const Header = () => {
 	const { currentUser } = useContext(AuthContext);
-	console.log('the current user info is: ', currentUser);
 
 	return (
 		<div className='header'>

@@ -13,4 +13,20 @@
 	.description {
 		max-height: 50px;
 	}
+	form {
+		display: flex;
+		flex-direction: column;
+		margin-left: 35px;
+		textarea {
+			resize: none;
+			width: 300px;
+			height: 70px;
+		}
+		button {
+			background-color: var(--accent);
+			color: var(--text-light);
+			font-weight: bolder;
+			border: solid 1px var(--neutral-medium);
+		}
+	}
 }

@@ -14,7 +14,6 @@ const Home = () => {
 	useEffect(() => {
 		makeRequest.get('/posts').then((res) => {
 			setPosts(res.data);
-			console.log('the posts data is: ', posts);
 		});
 	}, [toggleRefetchPosts]);
 

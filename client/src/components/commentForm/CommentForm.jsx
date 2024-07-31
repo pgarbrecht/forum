@@ -28,7 +28,6 @@ const CommentForm = (props) => {
 		e.preventDefault();
 		try {
 			// First create the comment
-			console.log('trying to post comment with inputs: ', inputs);
 			await axios.post('http://localhost:3001/api/comments', inputs);
 			// Then refetch comments to show new comment on the page
 			refetchComments();
