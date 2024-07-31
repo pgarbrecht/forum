@@ -7,7 +7,7 @@ import axios from 'axios';
 const PostForm = (props) => {
 	// Variables
 	const { currentUser } = useContext(AuthContext);
-	const refetch = props.refetch;
+	const refetchPosts = props.refetchPosts;
 
 	// State
 	const [inputs, setInputs] = useState({
@@ -28,7 +28,7 @@ const PostForm = (props) => {
 			// First create the user account
 			await axios.post('http://localhost:3001/api/posts', inputs);
 			// Then refetch posts to show new post on the page
-			refetch();
+			refetchPosts();
 		} catch (err) {
 			console.log('Error occurred: ', err);
 		}

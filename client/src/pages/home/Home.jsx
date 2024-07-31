@@ -6,9 +6,9 @@ import './home.scss';
 
 const Home = () => {
 	const [posts, setPosts] = useState([]);
-	const [toggleRefetch, setToggleRefetch] = useState(false);
-	const refetch = () => {
-		setToggleRefetch(!toggleRefetch);
+	const [toggleRefetchPosts, setToggleRefetchPosts] = useState(false);
+	const refetchPosts = () => {
+		setToggleRefetchPosts(!toggleRefetchPosts);
 	};
 
 	useEffect(() => {
@@ -16,12 +16,12 @@ const Home = () => {
 			setPosts(res.data);
 			console.log('the posts data is: ', posts);
 		});
-	}, [toggleRefetch]);
+	}, [toggleRefetchPosts]);
 
 	return (
 		<div className='home'>
-			<PostForm refetch={refetch} />
-			<Posts posts={posts} refetch={refetch} />
+			<PostForm refetchPosts={refetchPosts} />
+			<Posts posts={posts} refetchPosts={refetchPosts} />
 		</div>
 	);
 };

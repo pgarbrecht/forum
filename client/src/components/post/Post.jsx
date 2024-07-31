@@ -2,12 +2,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { makeRequest } from '../../utils';
 import { AuthContext } from '../../context/authContext';
+import Comment from '../comment/Comment';
 import './post.scss';
 import axios from 'axios';
 
 const Post = (props) => {
 	// Variables
-	const { post, refetch } = props;
+	const { post, refetchPosts } = props;
 	const { currentUser } = useContext(AuthContext);
 
 	// State
@@ -17,17 +18,11 @@ const Post = (props) => {
 		description: post.description,
 	});
 	const [comments, setComments] = useState([]);
+	const [toggleRefetchComments, setToggleRefetchComments] = useState(false);
 
-	// Effects
-	useEffect(() => {
-		makeRequest.get(`/comments?postId=${post.id}`).then((res) => {
-			setComments(res.data);
-		});
-	}, []);
-
-	useEffect(() => {
-		console.log('the comments data is: ', comments);
-	}, [comments]);
+	// useEffect(() => {
+	// 	console.log('the comments data is: ', comments);
+	// }, [comments]);
 
 	// Functions
 	const handleEdit = () => {
@@ -48,18 +43,28 @@ const Post = (props) => {
 			// Then change the state so that post won't show edit form
 			setIsEditing(false);
 			// Then refetch posts to show new post on the page
-			refetch();
+			refetchPosts();
 		} catch (err) {
 			console.log('Error occurred: ', err);
 		}
 	};
+	const refetchComments = () => {
+		setToggleRefetchComments(!toggleRefetchComments);
+	};
+
+	// Effects
+	useEffect(() => {
+		makeRequest.get(`/comments?postId=${post.id}`).then((res) => {
+			setComments(res.data);
+		});
+	}, [toggleRefetchComments]);
 
 	const handleDelete = async () => {
 		await makeRequest.delete(`/posts/${post.id}`).then((res) => {
 			console.log('the delete response is: ', res.data);
 		});
 		// Then refetch posts so page updates to show deleted post not there
-		refetch();
+		refetchPosts();
 	};
 
 	return (
@@ -79,9 +84,6 @@ const Post = (props) => {
 				) : (
 					<p>{post.description}</p>
 				)}
-				{comments?.map((comment) => (
-					<div>{comment.description}</div>
-				))}
 			</div>
 			<div className='actions'>
 				{/* The buttons to edit or delete post are only shown if it is the current user's post */}
@@ -96,6 +98,9 @@ const Post = (props) => {
 					</p>
 				)}
 			</div>
+			{comments?.map((comment) => (
+				<Comment data={comment} refetchComments={refetchComments} />
+			))}
 		</div>
 	);
 };
