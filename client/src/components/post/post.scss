@@ -29,6 +29,7 @@
 		display: flex;
 		gap: 5px;
 		margin-left: 10px;
+		margin-top: -15px;
 		.edit {
 			width: 30px;
 			padding: 2px 5px;
@@ -45,5 +46,10 @@
 			border-radius: 5px;
 			font-size: 14px;
 		}
+	}
+	.comments {
+		max-height: 120px;
+		overflow-y: scroll;
+		margin-top: 50px;
 	}
 }

@@ -2,6 +2,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { makeRequest } from '../../utils';
 import { AuthContext } from '../../context/authContext';
+import CommentForm from '../commentForm/CommentForm';
 import Comment from '../comment/Comment';
 import './post.scss';
 import axios from 'axios';
@@ -98,9 +99,12 @@ const Post = (props) => {
 					</p>
 				)}
 			</div>
-			{comments?.map((comment) => (
-				<Comment data={comment} refetchComments={refetchComments} />
-			))}
+			<CommentForm postId={post.id} refetchComments={refetchComments} />
+			<div className='comments'>
+				{comments?.map((comment) => (
+					<Comment data={comment} refetchComments={refetchComments} />
+				))}
+			</div>
 		</div>
 	);
 };

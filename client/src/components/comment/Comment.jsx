@@ -2,6 +2,7 @@
 import { useContext } from 'react';
 import { makeRequest } from '../../utils';
 import { AuthContext } from '../../context/authContext';
+import './comment.scss';
 
 const Comment = (props) => {
 	// Variables

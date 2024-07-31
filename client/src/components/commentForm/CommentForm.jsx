@@ -1,18 +1,20 @@
 // Dependencies
 import React, { useState, useContext } from 'react';
-import './postform.scss';
+import './commentForm.scss';
 import { AuthContext } from '../../context/authContext';
 import axios from 'axios';
 
-const PostForm = (props) => {
+const CommentForm = (props) => {
 	// Variables
 	const { currentUser } = useContext(AuthContext);
-	const refetchPosts = props.refetchPosts;
+	const refetchComments = props.refetchComments;
+	const postId = props.postId;
 
 	// State
 	const [inputs, setInputs] = useState({
 		userId: currentUser.id,
 		description: '',
+		postId: postId,
 	});
 
 	// Functions
@@ -25,28 +27,29 @@ const PostForm = (props) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			// First create the user account
-			await axios.post('http://localhost:3001/api/posts', inputs);
-			// Then refetch posts to show new post on the page
-			refetchPosts();
+			// First create the comment
+			console.log('trying to post comment with inputs: ', inputs);
+			await axios.post('http://localhost:3001/api/comments', inputs);
+			// Then refetch comments to show new comment on the page
+			refetchComments();
 		} catch (err) {
 			console.log('Error occurred: ', err);
 		}
 	};
 
 	return (
-		<div className='postform'>
+		<div className='commentform'>
 			<form>
 				<textarea
 					type='text'
-					placeholder='Type a new post here'
+					placeholder='Type a new comment here'
 					name='description'
 					onChange={handleChange}
 				/>
-				<button onClick={handleSubmit}>Add Post</button>
+				<button onClick={handleSubmit}>Add Comment</button>
 			</form>
 		</div>
 	);
 };
 
-export default PostForm;
+export default CommentForm;

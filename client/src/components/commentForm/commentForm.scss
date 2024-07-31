@@ -1,0 +1,26 @@
+.commentform {
+	margin-top: 25px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	form {
+		width: 500px;
+		display: flex;
+		flex-direction: column;
+		textarea {
+			resize: none;
+			padding: 5px;
+			width: 487px;
+			height: 50px;
+			border: solid 1px var(--neutral-dark);
+		}
+		button {
+			background-color: var(--secondary);
+			color: var(--text-light);
+			font-weight: bolder;
+			padding: 2px;
+			border: solid 1px var(--neutral-dark);
+		}
+	}
+}
