@@ -2,7 +2,7 @@ import { db } from '../connect.js';
 import moment from 'moment';
 
 export const getPosts = (req, res) => {
-	const q = `SELECT * FROM posts`;
+	const q = `SELECT c.*, u.id AS userId, username FROM posts AS c JOIN users AS u ON (u.id = c.userId)`;
 
 	db.query(q, (err, data) => {
 		if (err) return res.status(500).json(err);

@@ -93,7 +93,7 @@ const Post = (props) => {
 							<button onClick={handleSubmit}>Update Post</button>
 						</form>
 					) : (
-						<p>{post.description}</p>
+						<p>{`${post.username} says: ${post.description}`}</p>
 					)}
 				</div>
 			</div>
