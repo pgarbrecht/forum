@@ -18,6 +18,7 @@ I have set up Docker files and tested it can be run from Docker on my computer. 
 4. In a terminal, go to the root level of the repo and run the command `docker-compose up --build`
 5. You should then see logs verifying the application is running locally via Docker, including 'Server is running at port:3001'
 6. You can now open a browser to localhost (or click the link for the client mapped port 80:80 in Docker Desktop) and you should see the React frontend and be able to use the app.
+
 If you have any trouble using the app, please reach out. I am also happy to show it from my computer.
 
 Thank you for viewing this app, I hope you like it!
