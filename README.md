@@ -11,13 +11,13 @@ The app I made is called Forum. It's a fullstack app made with React.js for the 
 https://www.awesomescreenshot.com/video/30082827?key=e24ec81e8d85a560bd7b05ea959a599e
 
 ## How to Run the App
-This app can be run locally via Docker. To do so, please follow these steps, which should take just a few minutes:
-1. Install Docker Desktop (if not already installed)
+I have set up Docker files and tested it can be run from Docker on my computer. I had an issue running it from Docker on a different computer, but these steps may work for you:
+1. Install Docker Desktop (if not already installed) and run it
 2. Clone the repo from Github to your local computer
 3. Open the repo in VS Code, go to the /api subfolder, add a .env file there. Paste the info I shared with you in the .env file and save it.
 4. In a terminal, go to the root level of the repo and run the command `docker-compose up --build`
 5. You should then see logs verifying the application is running locally via Docker, including 'Server is running at port:3001'
-6. You can now open a browser to localhost (or click the link for the client mapped port 80:80 in Docker Desktop) and you should see the React frontend
-If you have any trouble running the app, please reach out and I will be happy to help
+6. You can now open a browser to localhost (or click the link for the client mapped port 80:80 in Docker Desktop) and you should see the React frontend and be able to use the app.
+If you have any trouble using the app, please reach out. I am also happy to show it from my computer.
 
 Thank you for viewing this app, I hope you like it!
