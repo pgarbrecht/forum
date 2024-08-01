@@ -2,6 +2,7 @@
 Thank you for viewing my project! In this ReadMe you will find an overview of what I built and how you can run it via Docker.
 
 ![Image of the Forum login screen](https://drive.google.com/uc?export=view&id=1X2u3D9Ky0T3MHLoz-OJ3EBZY2H4kj-96)
+
 ![Image of the Forum home screen](https://drive.google.com/uc?export=view&id=1Qhsec6J6XyaknI7j867U61axe2CaXbFq)
 
 ## About the App
